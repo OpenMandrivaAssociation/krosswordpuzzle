@@ -1,6 +1,6 @@
 Name:		krosswordpuzzle
 Version:	0.15.6.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 URL:	        http://kde-apps.org/content/show.php/KrossWordPuzzle?content=111726
 Group:		Games/Puzzles
