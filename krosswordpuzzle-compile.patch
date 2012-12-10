@@ -1,0 +1,96 @@
+--- krosswordpuzzle-1327226/CMakeLists.txt.bero	2012-12-06 19:45:45.101993183 +0100
++++ krosswordpuzzle-1327226/CMakeLists.txt	2012-12-06 19:45:48.928036388 +0100
+@@ -3,8 +3,6 @@ project( krosswordpuzzle )
+ find_package( KDE4 REQUIRED )
+ include ( KDE4Defaults )
+ 
+-find_package( LibKDEGames REQUIRED )
+-
+ # for KDE 4.3 we require at least version 0.30
+ set( SHARED_MIME_INFO_MINIMUM_VERSION "0.30" )
+ find_package( SharedMimeInfo )
+--- krosswordpuzzle-1327226/src/CMakeLists.txt.bero	2012-12-06 19:51:49.794089729 +0100
++++ krosswordpuzzle-1327226/src/CMakeLists.txt	2012-12-06 19:52:21.894449173 +0100
+@@ -49,7 +49,7 @@ kde4_add_kcfg_files( krosswordpuzzle_SRC
+ 
+ kde4_add_executable( krosswordpuzzle ${krosswordpuzzle_SRCS} )
+ 
+-target_link_libraries( krosswordpuzzle ${KDE4_KDEUI_LIBS} ${KDE4_KUTILS_LIBS}
++target_link_libraries( krosswordpuzzle ${KDE4_KDEUI_LIBS} ${KDE4_KUTILS_LIBS} kdegames kdegamesprivate
+     ${KDE4_KFILE_LIBRARY} ${KDEGAMES_LIBRARY} ${KDE4_KNEWSTUFF2_LIBS} ${QT_QTSQL_LIBRARY} ) # QtOpenGL ) #ksysguard  )
+ 
+ install( TARGETS krosswordpuzzle ${INSTALL_TARGETS_DEFAULT_ARGS} )
+--- krosswordpuzzle-1327226/src/crosswordxmlguiwindow.cpp.bero	2012-12-06 19:49:06.316254417 +0100
++++ krosswordpuzzle-1327226/src/crosswordxmlguiwindow.cpp	2012-12-06 19:49:26.600483267 +0100
+@@ -67,6 +67,8 @@
+ #include <KActionCollection>
+ #include <KActionMenu>
+ 
++#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API 1
++
+ #include <KToolBar>
+ #include <KMenuBar>
+ #include <KMenu>
+@@ -81,7 +83,7 @@
+ #include <KStatusBar>
+ #include <KEmoticons>
+ #include <KCharSelect>
+-#include <KGameDifficulty>
++#include <libkdegamesprivate/kgamedifficulty.h>
+ #include <KCursor>
+ #include <KPrintPreview>
+ #include <kdeprintdialog.h>
+--- krosswordpuzzle-1327226/src/dialogs/crosswordpropertiesdialog.cpp.bero	2012-12-06 19:50:56.986497946 +0100
++++ krosswordpuzzle-1327226/src/dialogs/crosswordpropertiesdialog.cpp	2012-12-06 19:51:13.238679427 +0100
+@@ -23,7 +23,9 @@
+ #include "krossword.h"
+ #include "cells/krosswordcell.h"
+ 
+-#include <KGameDifficulty>
++#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API 1
++
++#include <libkdegamesprivate/kgamedifficulty.h>
+ #include <KColorScheme>
+ 
+ 
+--- krosswordpuzzle-1327226/src/krosswordpuzzle.cpp.bero	2012-12-06 19:47:54.827452597 +0100
++++ krosswordpuzzle-1327226/src/krosswordpuzzle.cpp	2012-12-06 19:48:45.440021110 +0100
+@@ -34,6 +34,8 @@
+ #include <QCloseEvent>
+ #include <QtGui/QPrinter>
+ 
++#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API 1
++
+ // KDE UI includes
+ #include <KXMLGUIFactory>
+ #include <KMessageBox>
+@@ -47,7 +49,7 @@
+ #include <KMenuBar>
+ #include <KToolBar>
+ #include <KTabWidget>
+-#include <KGameThemeSelector>
++#include <libkdegamesprivate/kgamethemeselector.h>
+ #include <KShortcutsDialog>
+ 
+ // KDE action includes
+@@ -63,7 +65,7 @@
+ // Other KDE includes
+ #include <KDE/KLocale>
+ #include <KStandardDirs>
+-#include <KGameDifficulty>
++#include <libkdegamesprivate/kgamedifficulty.h>
+ #include <KRandom>
+ #include <KTemporaryFile>
+ #include <kdeversion.h>
+--- krosswordpuzzle-1327226/src/krosswordtheme.h.bero	2012-12-06 19:46:54.428773210 +0100
++++ krosswordpuzzle-1327226/src/krosswordtheme.h	2012-12-06 19:47:46.463358685 +0100
+@@ -24,7 +24,8 @@
+ #include <QColor>
+ #include <QRect>
+ 
+-#include <KGameTheme>
++#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API 1
++#include <libkdegamesprivate/kgametheme.h>
+ 
+ #if QT_VERSION >= 0x040600 // HACK TODO FIXME 0x040600
+ #include <QMargins>
