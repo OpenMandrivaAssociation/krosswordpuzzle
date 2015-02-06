@@ -6,7 +6,7 @@ Version:	0.16
 Release:	0.%svn.1
 Source0:	%name-%svn.tar.xz
 %else
-Release:	1
+Release:	2
 Source0:	%name-%{version}.tar.gz
 %endif
 Patch0:		krosswordpuzzle-compile.patch
