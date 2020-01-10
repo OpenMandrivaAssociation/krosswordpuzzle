@@ -32,7 +32,7 @@ You can download lots of crosswords from within the game.
 %else
 %setup -q
 %endif
-%apply_patches
+%autopatch -p1
 
 %build
 %cmake_kde4
