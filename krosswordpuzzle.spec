@@ -11,7 +11,7 @@ Source0:	%name-%{version}.tar.gz
 %endif
 Patch0:		krosswordpuzzle-compile.patch
 License:	GPLv2+
-URL:	        http://kde-apps.org/content/show.php/KrossWordPuzzle?content=111726
+URL:	        https://kde-apps.org/content/show.php/KrossWordPuzzle?content=111726
 Group:		Games/Puzzles
 Summary:        %{name}- a crossword puzzle for KDE
 
